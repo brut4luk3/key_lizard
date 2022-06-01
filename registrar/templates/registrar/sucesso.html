@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        {% if usuario.is_authenticated %}
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <strong>ATENÇÃO:</strong> Você já está logado!
+                </div>
+            </div>
+        {% else %}
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5">
+                        <h5>CADASTRO REALIZADO COM SUCESSO!</h5>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mb-5">
+                        <p>Realize agora seu login: <a href="{% url 'login' %}" style="text-decoration: none">Clique aqui!</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

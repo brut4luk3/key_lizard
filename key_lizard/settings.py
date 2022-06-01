@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
+    'registrar.apps.RegistrarConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
