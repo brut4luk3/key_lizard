@@ -10,12 +10,50 @@
                     </div>
                 </div>
         {% else %}
-            <div class="rounded bg-dark text-white">
+            <div class="rounded bg-info text-white">
                 <div class="row mt-5">
-                    <div class="col align-self-center text-center">
-                        FAÇA SEU LOGIN:
+                    <div class="col align-self-center text-center mt-5">
+                        <h5>FAÇA SEU LOGIN:</h5>
                     </div>
                 </div>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col my-3 mx-5">
+                            <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control"
+                                    placeholder="Informe seu nome de usuário"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3 mx-5">
+                            <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Informe sua senha"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center mb-2">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center mb-3">
+                            Não tem cadastro?
+                            <span class="ps-1">
+                                <a href="#" style="text-decoration: none">Clique aqui!</a>
+                            </span>
+                        </div>
+                    </div>
+                </form>
             </div>
         {% endif %}
     </div>
