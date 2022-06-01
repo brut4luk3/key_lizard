@@ -2,8 +2,22 @@
 
 {% block content %}
 
-    <div class="container">
-        Olá, mundo!
+    <div class="container mt-5" style="max-width: 480px">
+        {% if usuario.is_authenticated %}
+                <div class="row mt-5">
+                    <div class="col align-self-center text-center">
+                        <strong>ATENÇÃO:</strong> Você já está logado!
+                    </div>
+                </div>
+        {% else %}
+            <div class="rounded bg-dark text-white">
+                <div class="row mt-5">
+                    <div class="col align-self-center text-center">
+                        FAÇA SEU LOGIN:
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
