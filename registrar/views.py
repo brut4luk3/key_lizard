@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.contrib.auth.models import User
+from usuarios.models import Profile
 
 
 def novo(request):
@@ -19,8 +20,5 @@ def novo(request):
             first_name=post_data.get('txtFirstName'),
             last_name=post_data.get('txtLastName')
         )
-
-        u.set_password(post_data.get("txtPassword"))
-        u.save()
 
         return render(request, 'registrar/sucesso.html')

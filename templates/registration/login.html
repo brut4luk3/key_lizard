@@ -13,13 +13,23 @@
                 <h6>A chave para o sucesso!</h6>
             </div>
         </div>
-        {% if usuario.is_authenticated %}
-                <div class="row mt-3">
-                    <div class="col align-self-center text-center">
-                        <strong>ATENÇÃO:</strong> Você já está logado!
-                    </div>
+        {% if user.is_authenticated %}
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <strong>ATENÇÃO:</strong> Você já está logado!
                 </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <p>Para retornar ao início: <a href="{% url 'usuarios:index' %}" style="text-decoration: none">Clique aqui!</a> </p>
+                </div>
+            </div>
         {% else %}
+            {% if form.errors %}
+                <p>
+                    {{ form.errors }}
+                </p>
+            {% endif %}
             <div class="rounded bg-info text-white">
                 <div class="row mt-3">
                     <div class="col align-self-center text-center mt-5">

@@ -2,10 +2,15 @@
 
 {% block content %}
     <div class="container mt-5" style="max-width: 480px">
-        {% if usuario.is_authenticated %}
+        {% if user.is_authenticated %}
             <div class="row mt-3">
                 <div class="col align-self-center text-center">
                     <strong>ATENÇÃO:</strong> Você já está logado!
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <p>Para retornar ao início: <a href="{% url 'usuarios:index' %}" style="text-decoration: none">Clique aqui!</a> </p>
                 </div>
             </div>
         {% else %}
