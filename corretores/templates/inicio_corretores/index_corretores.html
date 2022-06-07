@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container rounded bg-info text-white mt-3 mb-3" style="max-width: 70%">
+        <!-- LINHA DO CABEÇALHO -->
+        <div class="row mt-3">
+            <div class="col align-self-center text-center mt-3">
+                <h1>Key Lizard</h1>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col align-self-center text-center">
+                <h6>A chave para o sucesso!</h6>
+            </div>
+        </div>
+        <!-- LINHA DO CABEÇALHO - FIM -->
+        {% if not user.is_authenticated %}
+        <!-- LINHA DA VERIFICAÇÃO DE LOGIN -->
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <strong>ATENÇÃO:</strong> Você não está logado!
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <p>Para realizar o login: <a href="{% url 'login' %}" style="text-decoration: none">Clique aqui!</a> </p>
+                </div>
+            </div>
+        <!-- LINHA DA VERIFICAÇÃO DE LOGIN - FIM -->
+        {% else %}
+        <!-- LINHA DA NAVBAR PRINCIPAL -->
+            <div class="row mt-1 mb-3">
+                <div class="col align-self-center text-center">
+                    <h4>Aqui você encontrará informações sobre sua equipe, {{user.username}}!</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col align-self-center text-center">
+                    <div class="btn-group btn-group-lg mb-3" style="width: 90%">
+                        <a href="{% url 'usuarios:index' %}" class="btn btn-primary">Página Inicial</a>
+                        <a href="#" class="btn btn-primary">Chaves</a>
+                        <a href="{% url 'corretores:index_corretores' %}" class="btn btn-primary active" aria-current="page">Equipe</a>
+                        <a href="#" class="btn btn-primary">Setores</a>
+                        <a href="#" class="btn btn-primary">Relatórios</a>
+                        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+                    </div>
+                </div>
+            </div>
+        <!-- LINHA DA NAVBAR PRINCIPAL - FIM -->
+        {% endif %}
+    </div>
+{% endblock %}
