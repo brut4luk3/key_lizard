@@ -21,4 +21,7 @@ def novo(request):
             last_name=post_data.get('txtLastName')
         )
 
+        u.set_password(post_data.get("txtPassword"))
+        u.save()
+
         return render(request, 'registrar/sucesso.html')
