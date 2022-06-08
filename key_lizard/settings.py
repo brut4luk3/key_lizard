@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'registrar.apps.RegistrarConfig',
     'corretores.apps.CorretoresConfig',
+    'landing_page.apps.LandingPageConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
