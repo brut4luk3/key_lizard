@@ -32,9 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
+    'landing_page.apps.LandingPageConfig',
     'registrar.apps.RegistrarConfig',
     'corretores.apps.CorretoresConfig',
-    'landing_page.apps.LandingPageConfig',
+    'setores.apps.SetoresConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',

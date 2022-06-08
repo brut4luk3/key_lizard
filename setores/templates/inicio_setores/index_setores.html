@@ -31,7 +31,7 @@
         <!-- LINHA DA NAVBAR PRINCIPAL -->
             <div class="row mt-1 mb-3">
                 <div class="col align-self-center text-center">
-                    <h4>Aqui você encontrará informações sobre sua equipe, {{user.username}}!</h4>
+                    <h4>Aqui você encontrará informações sobre seus setores, {{user.username}}!</h4>
                 </div>
             </div>
             <div class="row">
@@ -39,21 +39,22 @@
                     <div class="btn-group btn-group-lg mb-3" style="width: 90%">
                         <a href="{% url 'usuarios:index' %}" class="btn btn-primary">Página Inicial</a>
                         <a href="#" class="btn btn-primary">Chaves</a>
-                        <a href="{% url 'corretores:index_corretores' %}" class="btn btn-primary active" aria-current="page">Equipe</a>
-                        <a href="{% url 'setores:index_setores' %}" class="btn btn-primary">Setores</a>
+                        <a href="{% url 'corretores:index_corretores' %}" class="btn btn-primary">Equipe</a>
+                        <a href="{% url 'setores:index_setores' %}" class="btn btn-primary active" aria-current="page">Setores</a>
                         <a href="#" class="btn btn-primary">Relatórios</a>
                         <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
                     </div>
                 </div>
             </div>
         <!-- LINHA DA NAVBAR PRINCIPAL - FIM -->
-        <!-- LINHA DA LISTA DE CORRETORES CADASTRADOS -->
+        <!-- LINHA COM TABELAS DE VENDAS E LOCAÇÃO -->
             <div class="row">
-                <div class="col overflow-scroll rounded align-self-center text-center bg-light mx-5 mb-3"
+                <!-- COLUNA 1 -->
+                <div class="col overflow-scroll rounded align-self-left text-left bg-light ms-5 mb-3"
                      style="max-height: 300px"
                 >
                     <div class="row text-dark mt-2">
-                        <h4>Equipe Comercial:</h4>
+                        <h4>Equipe de Vendas:</h4>
                     </div>
                     <table class="table table-striped table-hover">
                         <thead>
@@ -70,11 +71,6 @@
                                 <td>A17</td>
                             </tr>
                             <tr>
-                                <th scope="row">Henrique</th>
-                                <td>Locação</td>
-                                <td>D02</td>
-                            </tr>
-                            <tr>
                                 <th scope="row">Luiz</th>
                                 <td>Vendas</td>
                                 <td>K19</td>
@@ -84,6 +80,31 @@
                                 <td>Vendas</td>
                                 <td>E20</td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- COLUNA 1 - FIM -->
+                <!-- COLUNA 2 -->
+                <div class="col overflow-scroll rounded align-self-left text-left bg-light mx-5 mb-3"
+                     style="max-height: 300px"
+                >
+                    <div class="row text-dark mt-2">
+                        <h4>Equipe de Locação:</h4>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Corretor</th>
+                                <th scope="col">Setor</th>
+                                <th scope="col">Último chave retirada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Henrique</th>
+                                <td>Locação</td>
+                                <td>D02</td>
+                            </tr>
                             <tr>
                                 <th scope="row">Giovanni</th>
                                 <td>Locação</td>
@@ -92,16 +113,15 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- COLUNA 2 - FIM -->
             </div>
-        <!-- LINHA DA LISTA DE CORRETORES CADASTRADOS - FIM -->
+        <!-- LINHA COM TABELAS VARIADAS - FIM -->
         <!-- LINHA DE REGISTRO DE TRANSAÇÕES -->
             <div class="row">
-                <div class="row">
-                    <div class="col align-self-center text-center">
-                        <div class="btn-group btn-group-lg mb-3">
-                            <a href="#" class="btn btn-primary" style="width: 200px">Cadastrar</a>
-                            <a href="#" class="btn btn-primary" style="width: 200px">Excluir</a>
-                        </div>
+                <div class="col align-self-center text-center">
+                    <div class="btn-group btn-group-lg mb-3">
+                        <a href="#" class="btn btn-primary" style="width: 200px">Cadastrar</a>
+                        <a href="#" class="btn btn-primary" style="width: 200px">Excluir</a>
                     </div>
                 </div>
             </div>
