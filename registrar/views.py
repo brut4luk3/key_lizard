@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from django.contrib.auth.models import User
-from usuarios.models import Profile
 
 
 def novo(request):

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <!-- LINHA DE CADASTRO DE NOVOS SETORES -->
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5">
+                        <h5>CADASTRE UM NOVO SETOR:</h5>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col my-3 mx-5">
+                            <input
+                                    type="text"
+                                    name="txtNomeSetor"
+                                    class="form-control"
+                                    placeholder="Informe o nome do setor"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO -->
+                    <div class="row">
+                        <div class="col d-flex justify-content-left mx-5">
+                            <p style="font-size: 0.9em">Preencha este campo com o nome de um (01) setor comercial de sua imobiliária (exemplo: Locação).</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <div class="btn-group btn-group-lg mb-3">
+                                <button class="btn btn-primary" type="submit" style="width: 200px">Cadastrar</button>
+                                <a href="{% url 'setores:index_setores' %}" class="btn btn-primary" style="width: 200px">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO - FIM -->
+                </form>
+            </div>
+        <!-- LINHA DE CADASTRO DE NOVOS SETORES - FIM -->
+    </div>
+{% endblock %}

@@ -116,16 +116,16 @@
                 <!-- COLUNA 2 - FIM -->
             </div>
         <!-- LINHA COM TABELAS VARIADAS - FIM -->
-        <!-- LINHA DE REGISTRO DE TRANSAÇÕES -->
+        <!-- LINHA DE CADASTRO E EXCLUSÃO DE SETORES -->
             <div class="row">
                 <div class="col align-self-center text-center">
                     <div class="btn-group btn-group-lg mb-3">
-                        <a href="#" class="btn btn-primary" style="width: 200px">Cadastrar</a>
+                        <a href="{% url 'setores:cadastrar_setores' %}" class="btn btn-primary" style="width: 200px">Cadastrar</a>
                         <a href="#" class="btn btn-primary" style="width: 200px">Excluir</a>
                     </div>
                 </div>
             </div>
-        <!-- LINHA DE REGISTRO DE TRANSAÇÕES - FIM -->
+        <!-- LINHA DE CADASTRO E EXCLUSÃO DE SETORES - FIM -->
         {% endif %}
     </div>
 {% endblock %}
