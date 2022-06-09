@@ -6,7 +6,7 @@ Neste sistema você encontrará as seguintes funcionalidades:
 
 1) Cadastro de usuários (admin/usuário final)
 2) Cadastro da equipe de corretores
-3) Cadastro de setores (opcional)
+3) Cadastro de setores
 4) Cadastro de chaves em lote (padrão ordem alfabética + 1 a 20, exemplo A1:20, B1:20, C1:20, etc)
 5) Cadastro de chaves individual
 6) Atribuição de dados em cada código de chaves (código do imóvel em sistemas CRM, endereço, etc)
