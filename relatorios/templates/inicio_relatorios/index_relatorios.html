@@ -31,17 +31,17 @@
         <!-- LINHA DA NAVBAR PRINCIPAL -->
             <div class="row mt-1 mb-3">
                 <div class="col align-self-center text-center">
-                    <h4>Seja bem-vindo, {{user.username}}!</h4>
+                    <h4>Aqui você encontrará uma variedade de relatórios administrativos, {{user.username}}!</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col align-self-center text-center">
                     <div class="btn-group btn-group-lg mb-3" style="width: 90%">
-                        <a href="{% url 'usuarios:index' %}" class="btn btn-primary active" aria-current="page">Página Inicial</a>
+                        <a href="{% url 'usuarios:index' %}" class="btn btn-primary">Página Inicial</a>
                         <a href="#" class="btn btn-primary">Chaves</a>
                         <a href="{% url 'corretores:index_corretores' %}" class="btn btn-primary">Equipe</a>
                         <a href="{% url 'setores:index_setores' %}" class="btn btn-primary">Setores</a>
-                        <a href="{% url 'relatorios:index_relatorios' %}" class="btn btn-primary">Relatórios</a>
+                        <a href="{% url 'relatorios:index_relatorios' %}" class="btn btn-primary active" aria-current="page">Relatórios</a>
                         <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
             <div class="row">
                 <!-- COLUNA 1 -->
                 <div class="col overflow-scroll rounded align-self-left text-left bg-light ms-5 mb-3"
-                     style="max-height: 300px"
+                     style="max-height: 400px"
                 >
                     <div class="row text-dark mt-2">
                         <h4>Últimas chaves retiradas:</h4>
@@ -96,7 +96,7 @@
                 <!-- COLUNA 1 - FIM -->
                 <!-- COLUNA 2 -->
                 <div class="col overflow-scroll rounded align-self-left text-left bg-light mx-5 mb-3"
-                     style="max-height: 300px"
+                     style="max-height: 400px"
                 >
                     <div class="row text-dark mt-2">
                         <h4>Chaves retiradas por terceiros:</h4>
@@ -147,16 +147,6 @@
                 <!-- COLUNA 2 - FIM -->
             </div>
         <!-- LINHA COM TABELAS VARIADAS - FIM -->
-        <!-- LINHA DE REGISTRO DE TRANSAÇÕES -->
-            <div class="row">
-                <div class="col align-self-center text-center">
-                    <div class="btn-group btn-group-lg mb-3">
-                        <a href="#" class="btn btn-primary" style="width: 200px">Retirada</a>
-                        <a href="#" class="btn btn-primary" style="width: 200px">Devolução</a>
-                    </div>
-                </div>
-            </div>
-        <!-- LINHA DE REGISTRO DE TRANSAÇÕES - FIM -->
         {% endif %}
     </div>
 {% endblock %}

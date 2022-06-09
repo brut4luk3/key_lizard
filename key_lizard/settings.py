@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'registrar.apps.RegistrarConfig',
     'corretores.apps.CorretoresConfig',
     'setores.apps.SetoresConfig',
+    'relatorios.apps.RelatoriosConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
