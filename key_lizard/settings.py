@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'corretores.apps.CorretoresConfig',
     'setores.apps.SetoresConfig',
     'relatorios.apps.RelatoriosConfig',
+    'chaves.apps.ChavesConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
