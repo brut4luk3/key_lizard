@@ -2,7 +2,7 @@ from django.db import models
 from setores.models import Setor
 
 class Corretor(models.Model):
-    setor = models.ForeignKey(Setor, on_delete=models.SET_NULL, null=True)
+    setor = models.ForeignKey(Setor, on_delete=models.CASCADE)
     nome = models.CharField(max_length=30, default='Imobiliária')
 
     def __str__(self):

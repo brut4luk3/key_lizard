@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <!-- LINHA DE CADASTRO DE NOVOS CORRETORES -->
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5 mb-3">
+                        <h5>CADASTRE UM NOVO CORRETOR</h5>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5">
+                            <p>Atribua um setor ao corretor:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5 mb-3">
+                            <select class="rounded" name="menuSetores" id="menuSetores">
+                                {% for setor in setores_cadastrados %}
+                                    <option value="{{ setor.id }}">
+                                        {{ setor.nome_setor }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mx-5">
+                            <input
+                                    type="text"
+                                    name="txtNomeCorretor"
+                                    class="form-control"
+                                    placeholder="Informe o nome do corretor"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO -->
+                    <div class="row">
+                        <div class="col d-flex justify-content-left mx-5">
+                            <p style="font-size: 0.9em">Preencha os campos acima com o nome completo do corretor e seu setor de negócios.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <div class="btn-group btn-group-lg mb-3">
+                                <button class="btn btn-primary" type="submit" style="width: 200px">Cadastrar</button>
+                                <a href="{% url 'corretores:index_corretores' %}" class="btn btn-primary" style="width: 200px">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO - FIM -->
+                </form>
+            </div>
+        <!-- LINHA DE CADASTRO DE NOVOS CORRETORES - FIM -->
+    </div>
+{% endblock %}

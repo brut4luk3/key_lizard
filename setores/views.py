@@ -20,6 +20,7 @@ def registrar_setores(request):
         post_data = request.POST
 
         s = Setor(
+            usuario=request.user,
             nome_setor=post_data.get('txtNomeSetor'),
         )
 
