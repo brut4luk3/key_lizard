@@ -6,7 +6,19 @@ from setores.models import Setor
 # FUNC DO INDEX #
 def index_corretores(request):
 
-    return render(request, 'inicio_corretores/index_corretores.html')
+    if request.user.is_authenticated:
+
+        corretores_listar = request.user.corretor_set.all()
+
+        context = {
+            'corretores_listar': corretores_listar
+        }
+
+        return render(request, 'inicio_corretores/index_corretores.html', context=context)
+
+    else:
+
+        return render(request, 'inicio_corretores/index_corretores.html')
 # FUNC DO INDEX - FIM #
 
 # FUNC DO CADASTRO DE CORRETORES #
@@ -25,11 +37,12 @@ def registrar_corretores(request):
     elif request.method == 'POST':
 
         post_data = request.POST
-        setores_id = request.POST['menuSetores']
+        form_id_setores = request.POST['menuSetores']
 
-        setores = Setor.objects.get(pk=setores_id)
+        setores = Setor.objects.get(pk=form_id_setores)
 
         c = Corretor(
+            usuario=request.user,
             setor=setores,
             nome=post_data.get('txtNomeCorretor')
         )

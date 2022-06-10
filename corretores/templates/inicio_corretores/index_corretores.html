@@ -58,37 +58,19 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Corretor</th>
-                                <th scope="col">Setor</th>
-                                <th scope="col">Último chave retirada</th>
+                                <th scope="col">Id do Corretor</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Setor atribuído</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for corretor in corretores_listar %}
                             <tr>
-                                <th scope="row">João</th>
-                                <td>Vendas</td>
-                                <td>A17</td>
+                                <th scope="row">{{ corretor.id }}</th>
+                                <td>{{ corretor.nome }}</td>
+                                <td>{{ corretor.setor }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">Henrique</th>
-                                <td>Locação</td>
-                                <td>D02</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Luiz</th>
-                                <td>Vendas</td>
-                                <td>K19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Alberto</th>
-                                <td>Vendas</td>
-                                <td>E20</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Giovanni</th>
-                                <td>Locação</td>
-                                <td>F03</td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

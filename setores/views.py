@@ -5,7 +5,19 @@ from setores.models import Setor
 # FUNC DO INDEX #
 def index_setores(request):
 
-    return render(request, 'inicio_setores/index_setores.html')
+    if request.user.is_authenticated:
+
+        setores_listar = request.user.setor_set.all()
+
+        context = {
+            'setores_listar': setores_listar
+        }
+
+        return render(request, 'inicio_setores/index_setores.html', context=context)
+
+    else:
+
+        return render(request, 'inicio_setores/index_setores.html')
 # FUNC DO INDEX - FIM #
 
 # FUNC DO CADASTRO DE SETORES #
