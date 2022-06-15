@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <!-- LINHA DE CADASTRO DE NOVAS CHAVES -->
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5 mb-3">
+                        <h5>CADASTRE UMA NOVA CHAVE</h5>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5">
+                            <p>Atribua esta chave a um setor:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5 mb-3">
+                            <select class="rounded" name="menuSetoresChaves" id="menuSetoresChaves">
+                                {% for setor in setores_cadastrados_chaves %}
+                                    <option value="{{ setor.id }}">
+                                        {{ setor.nome_setor }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5">
+                            <p>Atribua esta chave a um corretor ou local:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5 mb-3">
+                            <select class="rounded" name="menuCorretoresChaves" id="menuCorretoresChaves">
+                                {% for corretor in corretores_cadastrados_chaves %}
+                                    <option value="{{ corretor.id }}">
+                                        {{ corretor.nome }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mx-5 mb-3">
+                            <input
+                                    type="text"
+                                    name="txtCodigoChave"
+                                    class="form-control"
+                                    placeholder="Informe o código desta chave (03 dígitos)"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mx-5 mb-4">
+                            <input
+                                    type="text"
+                                    name="txtCodigoCrm"
+                                    class="form-control"
+                                    placeholder="Informe o código do imóvel"
+                                    required
+                            >
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO -->
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <div class="btn-group btn-group-lg mb-3">
+                                <button class="btn btn-primary" type="submit" style="width: 200px">Cadastrar</button>
+                                <a href="{% url 'chaves:index_chaves' %}" class="btn btn-primary" style="width: 200px">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col align-self-center text-center mb-3">
+                            <a href="{% url 'chaves:cadastrar_quadro' %}" class="btn btn-primary" style="width: 200px">Cadastrar Quadro</a>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO - FIM -->
+                </form>
+            </div>
+        <!-- LINHA DE CADASTRO DE NOVAS CHAVES - FIM -->
+    </div>
+{% endblock %}

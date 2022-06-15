@@ -5,10 +5,10 @@ from setores.models import Setor
 
 class Chave(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    corretor = models.ForeignKey(Corretor, on_delete=models.CASCADE)
-    setor_atribuido = models.ForeignKey(Setor, on_delete=models.SET_NULL, null=True)
+    corretor = models.ForeignKey(Corretor, on_delete=models.CASCADE, default='Imobiliária')
+    setor_atribuido = models.ForeignKey(Setor, on_delete=models.SET_NULL, null=True, default='Administrativo')
     codigo = models.CharField(max_length=3)
-    codigo_imovel_crm = models.CharField(max_length=30)
+    codigo_imovel_crm = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return self.codigo

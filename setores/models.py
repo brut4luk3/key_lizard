@@ -3,7 +3,7 @@ from django.db import models
 
 class Setor(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    nome_setor = models.CharField(max_length=30, default='Imobiliária')
+    nome_setor = models.CharField(max_length=30, default='Administrativo')
 
     def __str__(self):
         return self.nome_setor
