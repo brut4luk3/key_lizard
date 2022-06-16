@@ -2,12 +2,25 @@ from django.shortcuts import render
 from corretores.models import Corretor
 from setores.models import Setor
 from chaves.models import Chave
+import string
 
 
 # FUNC DO INDEX #
 def index_chaves(request):
 
-    return render(request, 'inicio_chaves/index_chaves.html')
+    if request.user.is_authenticated:
+
+        chaves_listar = request.user.chave_set.all()
+
+        context = {
+            'chaves_listar': chaves_listar
+        }
+
+        return render(request, 'inicio_chaves/index_chaves.html', context=context)
+
+    else:
+
+        return render(request, 'inicio_chaves/index_chaves.html')
 # FUNC DO INDEX - FIM #
 
 # FUNC DO CADASTRO DE CORRETORES #
@@ -50,5 +63,51 @@ def registrar_chaves(request):
 # FUNC DO CADASTRO DE QUADRO #
 def registrar_quadro(request):
 
-    return render(request, 'cadastrar_chaves/registrar_quadro.html')
+    if request.method == 'GET':
+
+        setores_cadastrados_chaves = request.user.setor_set.all()
+        corretores_cadastrados_chaves = request.user.corretor_set.all()
+
+        context = {
+            'setores_cadastrados_chaves': setores_cadastrados_chaves,
+            'corretores_cadastrados_chaves': corretores_cadastrados_chaves
+        }
+
+        return render(request, 'cadastrar_chaves/registrar_quadro.html', context=context)
+
+    elif request.method == 'POST':
+
+        form_id_setores = request.POST['menuSetoresChaves']
+        form_id_corretores = request.POST['menuCorretoresChaves']
+
+        setores_quadro = Setor.objects.get(pk=form_id_setores)
+        corretores_quadro = Corretor.objects.get(pk=form_id_corretores)
+        crm_quadro = Chave._meta.get_field('codigo_imovel_crm').get_default()
+
+        alfabeto_string = string.ascii_uppercase
+        alfabeto_lista = list(alfabeto_string)
+
+        numeros_int = list(range(1, 20 + 1))
+        numeros_lista = [str(x) for x in numeros_int]
+
+        lista_letras = [list(x * 20) for x in alfabeto_lista]
+
+        lista_numeros_gigante = list(numeros_lista * 26)
+
+        lista_nova = [x for outra_lista in lista_letras for x in outra_lista]
+
+        quadro_chaves = list(map(str.__add__, lista_nova, lista_numeros_gigante))
+
+        for i in quadro_chaves:
+            q = Chave(
+                usuario=request.user,
+                corretor=corretores_quadro,
+                setor_atribuido=setores_quadro,
+                codigo=i,
+                codigo_imovel_crm=crm_quadro
+            )
+
+            q.save()
+
+        return render(request, 'cadastrar_chaves/sucesso_quadro.html')
 # FUNC DO CADASTRO DE QUADRO - FIM #

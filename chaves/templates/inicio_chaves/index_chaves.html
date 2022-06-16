@@ -61,41 +61,19 @@
                             <tr>
                                 <th scope="col">Código</th>
                                 <th scope="col">Imóvel (Código CRM)</th>
+                                <th scope="col">Local/Corretor</th>
                                 <th scope="col">Setor</th>
-                                <th scope="col">Data de Cadastro</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for chave in chaves_listar %}
                             <tr>
-                                <th scope="row">A15</th>
-                                <td>AP01598</td>
-                                <td>Vendas</td>
-                                <td>2022-06-04 14:18</td>
+                                <th scope="row">{{ chave.codigo }}</th>
+                                <td>{{ chave.codigo_imovel_crm }}</td>
+                                <td>{{ chave.corretor }}</td>
+                                <td>{{ chave.setor_atribuido }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">F16</th>
-                                <td>CA02876</td>
-                                <td>Vendas</td>
-                                <td>2022-06-04 12:10</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">C07</th>
-                                <td>GL00234</td>
-                                <td>Vendas</td>
-                                <td>2022-06-04 11:27</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">G12</th>
-                                <td>LJ03456</td>
-                                <td>Vendas</td>
-                                <td>2022-06-04 09:19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">H11</th>
-                                <td>SA05690</td>
-                                <td>Vendas</td>
-                                <td>2022-06-04 08:57</td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -112,47 +90,19 @@
                             <tr>
                                 <th scope="col">Código</th>
                                 <th scope="col">Imóvel (Código CRM)</th>
+                                <th scope="col">Local/Corretor</th>
                                 <th scope="col">Setor</th>
-                                <th scope="col">Data de Cadastro</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for chave in chaves_listar %}
                             <tr>
-                                <th scope="row">A15</th>
-                                <td>AP01598</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 14:18</td>
+                                <th scope="row">{{ chave.codigo }}</th>
+                                <td>{{ chave.codigo_imovel_crm }}</td>
+                                <td>{{ chave.corretor }}</td>
+                                <td>{{ chave.setor_atribuido }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">F16</th>
-                                <td>CA02876</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 12:10</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">C07</th>
-                                <td>GL00234</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 11:27</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">G12</th>
-                                <td>LJ03456</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 09:19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">H11</th>
-                                <td>SA05690</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 08:57</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">C01</th>
-                                <td>SA00123</td>
-                                <td>Locação</td>
-                                <td>2022-06-04 08:57</td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

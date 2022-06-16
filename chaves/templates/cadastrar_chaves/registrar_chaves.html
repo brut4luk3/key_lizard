@@ -18,7 +18,7 @@
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-left ms-5 mb-3">
-                            <select class="rounded" name="menuSetoresChaves" id="menuSetoresChaves">
+                            <select class="rounded" name="menuSetoresChaves" id="menuSetoresChaves" style="width: 130px">
                                 {% for setor in setores_cadastrados_chaves %}
                                     <option value="{{ setor.id }}">
                                         {{ setor.nome_setor }}
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-left ms-5 mb-3">
-                            <select class="rounded" name="menuCorretoresChaves" id="menuCorretoresChaves">
+                            <select class="rounded" name="menuCorretoresChaves" id="menuCorretoresChaves" style="width: 130px">
                                 {% for corretor in corretores_cadastrados_chaves %}
                                     <option value="{{ corretor.id }}">
                                         {{ corretor.nome }}
