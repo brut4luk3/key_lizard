@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <!-- LINHA DE REGISTRO DE RETIRADA DE CHAVES -->
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5 mb-3">
+                        <h5>REGISTRE A RETIRADA DA CHAVE {{ chave.codigo }}</h5>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5">
+                            <p>Selecione o setor atribuído a esta chave:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5 mb-3">
+                            <select class="rounded" name="menuSetoresRetirada" id="menuSetoresRetirada" style="width: 130px">
+                                {% for setor in setores_cadastrados %}
+                                    <option value="{{ setor.id }}">
+                                        {{ setor.nome_setor }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5">
+                            <p>Selecione o corretor que retirou esta chave:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-left ms-5 mb-3">
+                            <select class="rounded" name="menuCorretoresRetirada" id="menuCorretoresRetirada" style="width: 130px">
+                                {% for corretor in corretores_cadastrados %}
+                                    <option value="{{ corretor.id }}">
+                                        {{ corretor.nome }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO -->
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <div class="btn-group btn-group-lg mb-3">
+                                <button class="btn btn-primary" type="submit" style="width: 200px">Registrar</button>
+                                <a href="{% url 'chaves:index_chaves' %}" class="btn btn-primary" style="width: 200px">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO - FIM -->
+                </form>
+            </div>
+        <!-- LINHA DE REGISTRO DE RETIRADA DE CHAVES - FIM -->
+    </div>
+{% endblock %}
