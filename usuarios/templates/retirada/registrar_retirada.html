@@ -13,22 +13,6 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col d-flex justify-content-left ms-5">
-                            <p>Selecione o setor atribuído a esta chave:</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-flex justify-content-left ms-5 mb-3">
-                            <select class="rounded" name="menuSetoresRetirada" id="menuSetoresRetirada" style="width: 130px">
-                                {% for setor in setores_cadastrados %}
-                                    <option value="{{ setor.id }}">
-                                        {{ setor.nome_setor }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-flex justify-content-left ms-5">
                             <p>Selecione o corretor que retirou esta chave:</p>
                         </div>
                     </div>

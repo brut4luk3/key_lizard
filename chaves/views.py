@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from corretores.models import Corretor
 from setores.models import Setor
 from chaves.models import Chave
@@ -111,3 +113,33 @@ def registrar_quadro(request):
 
         return render(request, 'cadastrar_chaves/sucesso_quadro.html')
 # FUNC DO CADASTRO DE QUADRO - FIM #
+
+# FUNC DE EDIÇÃO DE CHAVES #
+def editar_chaves(request, chave_id):
+
+    if request.method == 'GET':
+
+        chave = get_object_or_404(Chave, pk=chave_id)
+        setores_cadastrados_editar = request.user.setor_set.all()
+        corretores_cadastrados_editar = request.user.corretor_set.all()
+
+        context = {
+            'chave': chave,
+            'setores_cadastrados_editar': setores_cadastrados_editar,
+            'corretores_cadastrados_editar': corretores_cadastrados_editar
+        }
+
+        return render(request, 'editar_chaves/editar_chaves.html', context=context)
+
+    elif request.method == 'POST':
+
+        post_data_editar = request.POST
+
+        form_id_setores = request.POST['menuSetoresEditar']
+        form_id_corretores = request.POST['menuCorretoresEditar']
+        form_imovel_crm = post_data_editar.get('txtCodigoCrmEditar')
+
+        chaves_editadas = Chave.objects.filter(pk=chave_id).update(setor_atribuido=form_id_setores, corretor=form_id_corretores, codigo_imovel_crm=form_imovel_crm)
+
+        return HttpResponseRedirect(reverse('chaves:index_chaves'),)
+# FUNC DE EDIÇÃO DE CHAVES - FIM #

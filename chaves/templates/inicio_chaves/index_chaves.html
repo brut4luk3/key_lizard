@@ -48,6 +48,11 @@
             </div>
         <!-- LINHA DA NAVBAR PRINCIPAL - FIM -->
         <!-- LINHA COM TABELAS VARIADAS -->
+            <div class="row mt-1 mb-3">
+                <div class="col align-self-center text-center">
+                    <h4>Clique em uma chave para editar seu conteúdo!</h4>
+                </div>
+            </div>
             <div class="row">
                 <!-- COLUNA 1 -->
                 <div class="col overflow-scroll rounded align-self-left text-left bg-light ms-5 mb-3"
@@ -68,7 +73,7 @@
                         </thead>
                         <tbody>
                         {% for chave in chaves_listar %}
-                            <tr>
+                            <tr onclick="window.location='{% url 'chaves:editar_chaves' chave.pk %}';">
                                 <th scope="row">{{ chave.codigo }}</th>
                                 <td>{{ chave.codigo_imovel_crm }}</td>
                                 <td>{{ chave.corretor }}</td>
@@ -99,7 +104,7 @@
                         </thead>
                         <tbody>
                         {% for chave in chaves_listar %}
-                            <tr>
+                            <tr onclick="window.location='{% url 'chaves:editar_chaves' chave.pk %}';">
                                 <th scope="row">{{ chave.codigo }}</th>
                                 <td>{{ chave.codigo_imovel_crm }}</td>
                                 <td>{{ chave.corretor }}</td>

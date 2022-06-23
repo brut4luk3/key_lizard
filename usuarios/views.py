@@ -41,10 +41,9 @@ def registrar_retirada(request, chave_id):
 
     elif request.method == 'POST':
 
-        form_id_setores = request.POST['menuSetoresRetirada']
         form_id_corretores = request.POST['menuCorretoresRetirada']
 
-        chaves_retirada = Chave.objects.filter(pk=chave_id).update(setor_atribuido=form_id_setores, corretor=form_id_corretores)
+        chaves_retirada = Chave.objects.filter(pk=chave_id).update(corretor=form_id_corretores)
 
         return render(request, 'retirada/sucesso_retirada.html')
 # FUNC DE RETIRADA - FIM #
