@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <div class="rounded bg-info text-white">
+            <div class="row mt-3">
+                <div class="col align-self-center text-center mt-5">
+                    <h5>Chave excluída com sucesso!</h5>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col align-self-center text-center">
+                    <div class="btn-group btn-group-lg mb-3">
+                        <a href="{% url 'chaves:selecionar_excluir_chaves' %}" class="btn btn-primary" style="width: 200px">Excluir outra</a>
+                        <a href="{% url 'chaves:index_chaves' %}" class="btn btn-primary" style="width: 200px">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -143,3 +143,38 @@ def editar_chaves(request, chave_id):
 
         return HttpResponseRedirect(reverse('chaves:index_chaves'),)
 # FUNC DE EDIÇÃO DE CHAVES - FIM #
+
+# FUNC DE SELEÇÃO #
+def selecionar_excluir_chaves(request):
+
+    chaves_cadastradas = request.user.chave_set.all()
+
+    context = {
+        'chaves_cadastradas': chaves_cadastradas
+    }
+
+    return render(request, 'excluir_chaves/selecionar_excluir_chaves.html', context=context)
+# FUNC DE SELEÇÃO - FIM #
+
+# FUNC DE EXCLUIR DE CHAVES #
+def excluir_chaves(request, chave_id):
+    if request.method == 'GET':
+
+        chave = get_object_or_404(Chave, pk=chave_id)
+        setores_cadastrados = request.user.setor_set.all()
+        corretores_cadastrados = request.user.corretor_set.all()
+
+        context = {
+            'chave': chave,
+            'setores_cadastrados': setores_cadastrados,
+            'corretores_cadastrados': corretores_cadastrados
+        }
+
+        return render(request, 'excluir_chaves/excluir_chaves.html', context=context)
+
+    elif request.method == 'POST':
+
+        chave_excluida = Chave.objects.filter(id=chave_id).delete()
+
+        return render(request, 'excluir_chaves/sucesso_excluir_chaves.html')
+# FUNC DE EXCLUIR DE CHAVES - FIM #
