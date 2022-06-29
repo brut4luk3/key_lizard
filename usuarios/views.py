@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from setores.models import Setor
-from corretores.models import Corretor
 from chaves.models import Chave
+import datetime
 
 
 # FUNC DO INDEX #
@@ -42,8 +41,9 @@ def registrar_retirada(request, chave_id):
     elif request.method == 'POST':
 
         form_id_corretores = request.POST['menuCorretoresRetirada']
+        horario_atualizado = datetime.datetime.now()
 
-        chaves_retirada = Chave.objects.filter(pk=chave_id).update(corretor=form_id_corretores)
+        chaves_retirada = Chave.objects.filter(pk=chave_id).update(corretor=form_id_corretores, horario=horario_atualizado)
 
         return render(request, 'retirada/sucesso_retirada.html')
 # FUNC DE RETIRADA - FIM #
