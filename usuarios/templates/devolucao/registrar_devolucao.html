@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="max-width: 480px">
+        <!-- LINHA DE REGISTRO DE DEVOLUÇÃO DE CHAVES -->
+            <div class="rounded bg-info text-white">
+                <div class="row mt-3">
+                    <div class="col align-self-center text-center mt-5 mb-3">
+                        <h5>DESEJA REGISTRAR A DEVOLUÇÃO DA CHAVE {{ chave.codigo }}?</h5>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO -->
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <div class="btn-group btn-group-lg mb-3">
+                                <button class="btn btn-primary" type="submit" style="width: 200px">Sim</button>
+                                <a href="{% url 'usuarios:index' %}" class="btn btn-primary" style="width: 200px">Não</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LINHAS DA CONFIRMAÇÃO OU CANCELAMENTO - FIM -->
+                </form>
+            </div>
+        <!-- LINHA DE REGISTRO DE DEVOLUÇÃO DE CHAVES - FIM -->
+    </div>
+{% endblock %}
