@@ -12,10 +12,17 @@ def index_chaves(request):
 
     if request.user.is_authenticated:
 
+        id_vendas = Setor.objects.get(nome_setor='Vendas')
+        id_locacao = Setor.objects.get(nome_setor='Locação')
+
         chaves_listar = request.user.chave_set.all()
+        chaves_vendas = Chave.objects.filter(setor_atribuido=id_vendas).all()
+        chaves_locacao = Chave.objects.filter(setor_atribuido=id_locacao).all()
 
         context = {
-            'chaves_listar': chaves_listar
+            'chaves_listar': chaves_listar,
+            'chaves_vendas': chaves_vendas,
+            'chaves_locacao': chaves_locacao
         }
 
         return render(request, 'inicio_chaves/index_chaves.html', context=context)
@@ -139,9 +146,14 @@ def editar_chaves(request, chave_id):
         form_id_corretores = request.POST['menuCorretoresEditar']
         form_imovel_crm = post_data_editar.get('txtCodigoCrmEditar')
 
-        chaves_editadas = Chave.objects.filter(pk=chave_id).update(setor_atribuido=form_id_setores, corretor=form_id_corretores, codigo_imovel_crm=form_imovel_crm)
+        if form_imovel_crm == '':
+            chaves_editadas = Chave.objects.filter(pk=chave_id).update(setor_atribuido=form_id_setores, corretor=form_id_corretores)
 
-        return HttpResponseRedirect(reverse('chaves:index_chaves'),)
+            return HttpResponseRedirect(reverse('chaves:index_chaves'),)
+        else:
+            chaves_editadas = Chave.objects.filter(pk=chave_id).update(setor_atribuido=form_id_setores, corretor=form_id_corretores, codigo_imovel_crm=form_imovel_crm)
+
+            return HttpResponseRedirect(reverse('chaves:index_chaves'),)
 # FUNC DE EDIÇÃO DE CHAVES - FIM #
 
 # FUNC DE SELEÇÃO #

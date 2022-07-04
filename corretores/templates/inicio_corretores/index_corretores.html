@@ -48,6 +48,11 @@
             </div>
         <!-- LINHA DA NAVBAR PRINCIPAL - FIM -->
         <!-- LINHA DA LISTA DE CORRETORES CADASTRADOS -->
+            <div class="row mt-1 mb-3">
+                <div class="col align-self-center text-center">
+                    <h4>Clique em um corretor para editar seu conteúdo!</h4>
+                </div>
+            </div>
             <div class="row">
                 <div class="col overflow-scroll rounded align-self-center text-center bg-light mx-5 mb-3"
                      style="max-height: 300px"
@@ -65,7 +70,7 @@
                         </thead>
                         <tbody>
                         {% for corretor in corretores_listar %}
-                            <tr>
+                            <tr onclick="window.location='{% url 'corretores:editar_corretores' corretor.pk %}';">
                                 <th scope="row">{{ corretor.id }}</th>
                                 <td>{{ corretor.nome }}</td>
                                 <td>{{ corretor.setor }}</td>
@@ -82,7 +87,7 @@
                     <div class="col align-self-center text-center">
                         <div class="btn-group btn-group-lg mb-3">
                             <a href="{% url 'corretores:cadastrar_corretores' %}" class="btn btn-primary" style="width: 200px">Cadastrar</a>
-                            <a href="#" class="btn btn-primary" style="width: 200px">Excluir</a>
+                            <a href="{% url 'corretores:selecionar_excluir_corretores' %}" class="btn btn-primary" style="width: 200px">Excluir</a>
                         </div>
                     </div>
                 </div>

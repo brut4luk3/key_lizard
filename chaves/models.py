@@ -16,3 +16,4 @@ class Chave(models.Model):
 
     class Meta:
         db_table = 'tb_chaves'
+        get_latest_by = 'horario'

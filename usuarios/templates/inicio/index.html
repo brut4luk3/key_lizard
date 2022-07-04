@@ -60,36 +60,22 @@
                         <thead>
                             <tr>
                                 <th scope="col">Código</th>
-                                <th scope="col">Corretor</th>
-                                <th scope="col">Data/Horário</th>
+                                <th scope="col">Imóvel (Código CRM)</th>
+                                <th scope="col">Local/Corretor</th>
+                                <th scope="col">Setor</th>
+                                <th scope="col">Última retirada</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for chave in ultimas_chaves_retiradas %}
                             <tr>
-                                <th scope="row">A15</th>
-                                <td>Alpha</td>
-                                <td>2022-06-04 14:18</td>
+                                <th scope="row">{{ chave.codigo }}</th>
+                                <td>{{ chave.codigo_imovel_crm }}</td>
+                                <td>{{ chave.corretor }}</td>
+                                <td>{{ chave.setor_atribuido }}</td>
+                                <td>{{ chave.horario }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">F16</th>
-                                <td>Mike</td>
-                                <td>2022-06-04 12:10</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">C07</th>
-                                <td>Juliett</td>
-                                <td>2022-06-04 11:27</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">G12</th>
-                                <td>Foxtrot</td>
-                                <td>2022-06-04 09:19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">H11</th>
-                                <td>Lima</td>
-                                <td>2022-06-04 08:57</td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
