@@ -72,7 +72,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {% for chave in chaves_listar %}
+                        {% for chave in chaves_vendas %}
                             <tr onclick="window.location='{% url 'chaves:editar_chaves' chave.pk %}';">
                                 <th scope="row">{{ chave.codigo }}</th>
                                 <td>{{ chave.codigo_imovel_crm }}</td>
@@ -103,7 +103,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {% for chave in chaves_listar %}
+                        {% for chave in chaves_locacao %}
                             <tr onclick="window.location='{% url 'chaves:editar_chaves' chave.pk %}';">
                                 <th scope="row">{{ chave.codigo }}</th>
                                 <td>{{ chave.codigo_imovel_crm }}</td>
