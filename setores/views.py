@@ -7,13 +7,39 @@ def index_setores(request):
 
     if request.user.is_authenticated:
 
-        setores_listar = request.user.setor_set.all()
+        quantidade_setores = request.user.setor_set.all().count()
 
-        context = {
-            'setores_listar': setores_listar
-        }
+        if quantidade_setores == 0:
 
-        return render(request, 'inicio_setores/index_setores.html', context=context)
+            sv = Setor(
+                usuario=request.user,
+                nome_setor='Vendas'
+            )
+            sv.save()
+
+            sl = Setor(
+                usuario=request.user,
+                nome_setor='Locação'
+            )
+            sl.save()
+
+            sa = Setor(
+                usuario=request.user,
+                nome_setor='Adminstrativo'
+            )
+            sa.save()
+
+            return render(request, 'inicio_setores/index_setores.html')
+
+        else:
+
+            setores_listar = request.user.setor_set.all()
+
+            context = {
+                'setores_listar': setores_listar
+            }
+
+            return render(request, 'inicio_setores/index_setores.html', context=context)
 
     else:
 
