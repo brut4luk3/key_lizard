@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from setores.models import Setor
 
 
@@ -66,3 +68,61 @@ def registrar_setores(request):
 
         return render(request, 'cadastrar_setores/sucesso_setores.html')
 # FUNC DO CADASTRO DE SETORES - FIM #
+
+# FUNC DE EDIÇÃO DE SETORES #
+def editar_setores(request, setor_id):
+
+    if request.method == 'GET':
+
+        setor = get_object_or_404(Setor, pk=setor_id)
+        setores_cadastrados_editar = request.user.setor_set.all()
+
+        context = {
+            'setor': setor,
+            'setores_cadastrados_editar': setores_cadastrados_editar
+        }
+
+        return render(request, 'editar_setores/editar_setores.html', context=context)
+
+    elif request.method == 'POST':
+
+        post_data_editar = request.POST
+        form_setor_nome = post_data_editar.get('txtNomeSetor')
+
+        setores_editados = Setor.objects.filter(pk=setor_id).update(nome_setor=form_setor_nome)
+
+        return HttpResponseRedirect(reverse('setores:index_setores'),)
+# FUNC DE EDIÇÃO DE SETORES - FIM #
+
+# FUNC DE SELEÇÃO #
+def selecionar_excluir_setores(request):
+
+    setores_cadastrados = request.user.setor_set.all()
+
+    context = {
+        'setores_cadastrados': setores_cadastrados
+    }
+
+    return render(request, 'excluir_setores/selecionar_excluir_setores.html', context=context)
+# FUNC DE SELEÇÃO - FIM #
+
+# FUNC DE EXCLUIR DE SETORES #
+def excluir_setores(request, setor_id):
+    if request.method == 'GET':
+
+        setor = get_object_or_404(Setor, pk=setor_id)
+        setores_cadastrados = request.user.setor_set.all()
+
+        context = {
+            'setor': setor,
+            'setores_cadastrados': setores_cadastrados
+        }
+
+        return render(request, 'excluir_setores/excluir_setores.html', context=context)
+
+    elif request.method == 'POST':
+
+        setor_excluido = Setor.objects.filter(id=setor_id).delete()
+
+        return render(request, 'excluir_setores/sucesso_excluir_setores.html')
+# FUNC DE EXCLUIR DE SETORES - FIM #

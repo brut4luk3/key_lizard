@@ -10,13 +10,28 @@ def index_corretores(request):
 
     if request.user.is_authenticated:
 
-        corretores_listar = request.user.corretor_set.all()
+        quantidade_corretores = request.user.corretor_set.all().count()
+        id_administrativo = Setor.objects.get(nome_setor='Administrativo')
 
-        context = {
-            'corretores_listar': corretores_listar
-        }
+        if quantidade_corretores == 0:
 
-        return render(request, 'inicio_corretores/index_corretores.html', context=context)
+            ci = Corretor(
+                nome='Imobiliária',
+                setor=id_administrativo
+            )
+            ci.save()
+
+            return render(request, 'inicio_corretores/index_corretores.html')
+
+        else:
+
+            corretores_listar = request.user.corretor_set.all()
+
+            context = {
+                'corretores_listar': corretores_listar
+            }
+
+            return render(request, 'inicio_corretores/index_corretores.html', context=context)
 
     else:
 
